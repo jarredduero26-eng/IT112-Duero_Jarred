@@ -1,0 +1,65 @@
+#include <stdio.h>
+ 
+float add(float a, float b) {
+	return a + b;
+}
+float subtract(float a, float b) {
+	return a - b;
+}
+float multiply(float a, float b) {
+	return a * b;
+}
+float divide(float a, float b) {
+	return a / b;
+}
+
+int main() {
+	float first, second, result;
+	int choice;
+
+	do {
+		printf("\nMultiple function to perform Arithmetic Operations\n");
+
+		printf("\nEnter first number: ");
+		scanf_s("%f", &first);
+
+		printf("Enter first number: ");
+		scanf_s("%f", &second);
+
+		printf("\nChoose Operation:\n");
+		printf("[1] Addition\n");
+		printf("[2] Subtruction\n");
+		printf("[3] Multiplication\n");
+		printf("[4] Division\n");
+		printf("[5] Exit Program\n");
+
+		printf("\nEnter choice [1-5]: ");
+		scanf_s("%d", &choice);
+
+		if (choice == 1) {
+			result = add(first, second);
+			printf("\n%.0f + %.0f = %.0f\n", first, second, result);
+		}
+		else if (choice == 2) {
+			result = subtract(first, second);
+			printf("\n%.0f - %.0f = %.0f\n", first, second, result);
+		}
+		else if (choice == 3) {
+			result = multiply(first, second);
+			printf("\n%.0f * %.0f = %.0f\n", first, second, result);
+		}
+		else if (choice == 4) {
+			result = divide(first, second);
+			printf("\n%.0f / %.0f = %.2f\n", first, second, result);
+		}
+		else if (choice == 5) {
+			printf("Exiting program");
+		}
+		else {
+			printf("Invalid choice.\n");
+		}
+
+	} while (choice != 5);
+
+	return 0;
+}
