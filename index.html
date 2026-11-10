@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SkyShield AI | Weather Risk &amp; Preparedness</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ctext y='14' font-size='14'%3E%F0%9F%9B%A1%3C/text%3E%3C/svg%3E">
+
+  <!-- Bootstrap: local first, online backup if the assets folder is missing -->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet" onerror="this.onerror=null;this.href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css'">
+  <link href="assets/css/bootstrap-icons.min.css" rel="stylesheet" onerror="this.onerror=null;this.href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'">
+
+  <style>
+    :root{--sky:#0b5ed7;--sky-dark:#083d91}
+    body{background:#f4f7fb}
+    .view{display:none}.view.on{display:block}
+    .btn-sky{background:var(--sky);border-color:var(--sky);color:#fff}
+    .btn-sky:hover{background:var(--sky-dark);border-color:var(--sky-dark);color:#fff}
+    .text-sky{color:var(--sky)}
+    .hero{background:linear-gradient(135deg,var(--sky-dark),var(--sky) 60%,#3aa0ff);color:#fff;padding:5rem 0}
+    .ico{width:56px;height:56px;border-radius:50%;background:#e7f0ff;color:var(--sky);display:inline-flex;align-items:center;justify-content:center;font-size:1.6rem}
+    .lift{transition:transform .2s}.lift:hover{transform:translateY(-4px)}
+    .score{font-size:3.5rem;font-weight:800;line-height:1}
+  </style>
+</head>
+<body>
+
+<div id="nocss" hidden style="background:#fff3cd;color:#664d03;padding:12px;text-align:center;font-family:sans-serif;font-size:14px">
+  <b>Design not loaded.</b> Put the teacher's <code>assets/</code> folder next to <code>index.html</code>, or connect to the internet once, then press Ctrl + F5.
+</div>
+
+<nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold text-sky" href="#home"><i class="bi bi-shield-fill-check"></i> SkyShield AI</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About the Study</a></li>
+        <li class="nav-item auth-in d-none"><a class="nav-link" href="#dash">Dashboard</a></li>
+        <li class="nav-item auth-out"><a class="btn btn-outline-secondary btn-sm" href="#login">Login</a></li>
+        <li class="nav-item auth-out"><a class="btn btn-sky btn-sm" href="#signup">Sign Up</a></li>
+        <li class="nav-item auth-in d-none"><button class="btn btn-outline-danger btn-sm" id="logout"><i class="bi bi-box-arrow-right"></i> Logout</button></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main>
+<!-- HOME -->
+<section class="view" id="v-home">
+  <header class="hero">
+    <div class="container text-center text-lg-start">
+      <div class="col-lg-8">
+        <h1 class="display-4 fw-bold">Know the weather risk before you leave for school.</h1>
+        <p class="lead my-4">SkyShield AI checks heavy rain, thunderstorms and extreme heat, rates your risk as Low, Moderate or High, and gives you a personal preparedness plan. It works fully offline.</p>
+        <a href="#signup" class="btn btn-light btn-lg me-2">Get Started</a>
+        <a href="#login" class="btn btn-outline-light btn-lg">Login</a>
+      </div>
+    </div>
+  </header>
+  <div class="container py-5">
+    <div class="text-center mb-5"><h2 class="fw-bold">What SkyShield AI Does</h2><p class="text-muted">Built for students, based on our Group 5 research.</p></div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3"><div class="card h-100 border-0 shadow-sm lift text-center p-4"><span class="ico mx-auto mb-3"><i class="bi bi-cloud-lightning-rain"></i></span><h5>Risk Analysis</h5><p class="text-muted mb-0">Weighs weather, rain chance, heat, travel and belongings.</p></div></div>
+      <div class="col-md-6 col-lg-3"><div class="card h-100 border-0 shadow-sm lift text-center p-4"><span class="ico mx-auto mb-3"><i class="bi bi-speedometer2"></i></span><h5>Risk Levels</h5><p class="text-muted mb-0">Score 0-100 classified as Low, Moderate or High.</p></div></div>
+      <div class="col-md-6 col-lg-3"><div class="card h-100 border-0 shadow-sm lift text-center p-4"><span class="ico mx-auto mb-3"><i class="bi bi-person-check"></i></span><h5>Personalized Tips</h5><p class="text-muted mb-0">Advice for walking, riding or commuting, plus a checklist.</p></div></div>
+      <div class="col-md-6 col-lg-3"><div class="card h-100 border-0 shadow-sm lift text-center p-4"><span class="ico mx-auto mb-3"><i class="bi bi-wifi-off"></i></span><h5>Works Offline</h5><p class="text-muted mb-0">Accounts and history are saved in your browser.</p></div></div>
+    </div>
+    <div class="alert alert-warning mt-5 mb-0"><i class="bi bi-exclamation-triangle-fill me-2"></i><b>Important:</b> SkyShield AI is a supplementary tool. It does not replace official advisories from PAGASA or local authorities.</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="view" id="v-about">
+  <div class="container py-5">
+    <h2 class="fw-bold">SkyShield AI</h2>
+    <p class="text-muted">An Intelligent Weather Risk Prediction and Personalized Preparedness System for Students</p>
+    <div class="accordion shadow-sm" id="acc">
+      <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a1">Background and Objectives</button></h3>
+        <div id="a1" class="accordion-collapse collapse show" data-bs-parent="#acc"><div class="accordion-body">
+          <p>Heavy rain, thunderstorms and extreme heat can affect students' safety, attendance and travel. General forecasts do not always tell a student what to prepare. SkyShield AI turns weather conditions into clear risk levels and personal recommendations.</p>
+          <ol class="mb-0"><li>Analyze weather data to identify rain, thunderstorm and heat risks.</li><li>Classify risks as low, moderate or high.</li><li>Give personalized alerts and preparation tips.</li><li>Improve students' awareness before travelling to school.</li><li>Evaluate functionality and usability.</li></ol></div></div></div>
+      <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a2">Scope: Features</button></h3>
+        <div id="a2" class="accordion-collapse collapse" data-bs-parent="#acc"><div class="accordion-body"><ul class="mb-0"><li>Weather information input</li><li>AI-assisted risk scoring</li><li>Low / Moderate / High classification</li><li>Personalized preparedness recommendations</li><li>On-screen alerts for severe conditions</li><li>Student-friendly interface with accounts and history</li></ul></div></div></div>
+      <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a3">Limitations</button></h3>
+        <div id="a3" class="accordion-collapse collapse" data-bs-parent="#acc"><div class="accordion-body"><ul class="mb-0"><li>This offline version uses the weather values you enter; it does not download live forecasts.</li><li>Results depend on the accuracy of your inputs; weather can change unexpectedly.</li><li>Accounts live only in the browser you use.</li><li>Not a replacement for official warnings or emergency instructions.</li></ul></div></div></div>
+      <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a4">Who Benefits</button></h3>
+        <div id="a4" class="accordion-collapse collapse" data-bs-parent="#acc"><div class="accordion-body">Students, teachers, school administrators, parents and guardians, and future researchers.</div></div></div>
+    </div>
+    <p class="mt-4 mb-0 text-muted"><b>Group 5 researchers:</b> Jarred D. Duero, Angel May E. Guibelondo, Princess Jewel Salon</p>
+  </div>
+</section>
+
+<!-- LOGIN -->
+<section class="view" id="v-login">
+  <div class="container py-5"><div class="row justify-content-center"><div class="col-md-8 col-lg-5">
+    <div class="card border-0 shadow-sm p-4">
+      <h3 class="fw-bold mb-1">Welcome back</h3><p class="text-muted">Log in to open your dashboard.</p>
+      <div id="loginMsg"></div>
+      <form id="loginForm" novalidate>
+        <div class="mb-3"><label class="form-label" for="lEmail">Email</label><div class="input-group"><span class="input-group-text"><i class="bi bi-envelope"></i></span><input type="email" id="lEmail" class="form-control" autocomplete="username"></div></div>
+        <div class="mb-3"><label class="form-label" for="lPass">Password</label><div class="input-group"><span class="input-group-text"><i class="bi bi-lock"></i></span><input type="password" id="lPass" class="form-control" autocomplete="current-password"></div></div>
+        <button class="btn btn-sky w-100">Login</button>
+      </form>
+      <p class="text-center mt-3 mb-0">No account? <a href="#signup">Sign up</a></p>
+    </div></div></div></div>
+</section>
+
+<!-- SIGNUP -->
+<section class="view" id="v-signup">
+  <div class="container py-5"><div class="row justify-content-center"><div class="col-md-8 col-lg-6">
+    <div class="card border-0 shadow-sm p-4">
+      <h3 class="fw-bold mb-1">Create your account</h3><p class="text-muted">Saved on this device, so it works without internet.</p>
+      <div id="signMsg"></div>
+      <form id="signForm" novalidate>
+        <div class="mb-3"><label class="form-label" for="sName">Full name</label><input type="text" id="sName" class="form-control"></div>
+        <div class="mb-3"><label class="form-label" for="sEmail">Email</label><input type="email" id="sEmail" class="form-control" autocomplete="username"></div>
+        <div class="row g-3 mb-3">
+          <div class="col-md-6"><label class="form-label" for="sPass">Password (6+ characters)</label><input type="password" id="sPass" class="form-control" autocomplete="new-password"></div>
+          <div class="col-md-6"><label class="form-label" for="sPass2">Confirm password</label><input type="password" id="sPass2" class="form-control" autocomplete="new-password"></div>
+        </div>
+        <button class="btn btn-sky w-100">Sign Up</button>
+      </form>
+      <p class="text-center mt-3 mb-0">Already registered? <a href="#login">Login</a></p>
+    </div></div></div></div>
+</section>
+
+<!-- DASHBOARD -->
+<section class="view" id="v-dash">
+  <div class="container py-4">
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
+      <div><h2 class="fw-bold mb-0">Hello, <span id="uName"></span>!</h2><span class="text-muted">Enter today's conditions to get your preparedness report.</span></div>
+      <span class="badge text-bg-secondary"><i class="bi bi-wifi-off"></i> Offline ready</span>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-5">
+        <div class="card border-0 shadow-sm"><div class="card-body p-4">
+          <h5 class="fw-bold mb-3"><i class="bi bi-sliders text-sky"></i> Today's Conditions</h5>
+          <form id="riskForm">
+            <div class="mb-3"><label class="form-label" for="fW">How is the weather?</label><select id="fW" class="form-select"><option value="0">Sunny</option><option value="1">Cloudy</option><option value="2">Light rain</option><option value="3">Heavy rain</option><option value="4">Thunderstorm</option></select></div>
+            <div class="mb-3"><label class="form-label" for="fR">Chance of rain: <b id="rv">30</b>%</label><input type="range" class="form-range" id="fR" min="0" max="100" value="30"></div>
+            <div class="mb-3"><label class="form-label" for="fK">Temperature (&deg;C)</label><input type="number" id="fK" class="form-control" min="10" max="50" value="30"></div>
+            <div class="mb-3"><label class="form-label" for="fT">How do you travel to school?</label><select id="fT" class="form-select"><option value="0">Walking</option><option value="1">Bicycle or motorcycle</option><option value="2">Car, bus or covered transport</option></select></div>
+            <div class="mb-3"><label class="form-label" for="fM">Trip time (1-180 minutes)</label><input type="number" id="fM" class="form-control" min="1" max="180" value="20"></div>
+            <div class="form-check mb-4"><input class="form-check-input" type="checkbox" id="fE" checked><label class="form-check-label" for="fE">I carry a phone, tablet or laptop</label></div>
+            <button class="btn btn-sky w-100"><i class="bi bi-shield-check"></i> Check My Risk</button>
+          </form>
+        </div></div>
+      </div>
+      <div class="col-lg-7">
+        <div class="card border-0 shadow-sm"><div class="card-body p-4" id="result">
+          <div class="text-center text-muted py-5"><i class="bi bi-cloud-sun display-3"></i><p class="mt-3 mb-0">Your report will appear here.</p></div>
+        </div></div>
+      </div>
+    </div>
+    <div class="card border-0 shadow-sm mt-4"><div class="card-body p-4">
+      <div class="d-flex justify-content-between align-items-center mb-3"><h5 class="fw-bold mb-0"><i class="bi bi-clock-history text-sky"></i> My Recent Checks</h5><button class="btn btn-outline-danger btn-sm" id="clearH" type="button">Clear history</button></div>
+      <div class="table-responsive"><table class="table align-middle mb-0"><thead><tr><th>Date</th><th>Weather</th><th>Score</th><th>Level</th></tr></thead><tbody id="hist"></tbody></table></div>
+    </div></div>
+  </div>
+</section>
+</main>
+
+<footer class="bg-dark text-light py-4 mt-5">
+  <div class="container text-center small">&copy; 2026 SkyShield AI &middot; Group 5 &middot; For learning purposes. Always follow official weather advisories.</div>
+</footer>
+
+<script src="assets/js/bootstrap.bundle.min.js" onerror="this.onerror=null;var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js';document.body.appendChild(s)"></script>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const mem={};
+const db={
+  get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return k in mem?mem[k]:d}},
+  set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){mem[k]=v}},
+  del(k){try{localStorage.removeItem(k)}catch(e){delete mem[k]}}
+};
+const hash=s=>{let h=5381;for(const c of s)h=((h<<5)+h+c.charCodeAt(0))>>>0;return 'h'+h};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const me=()=>db.get('ss_sess',null);
+const alertBox=(el,type,msg)=>{$(el).innerHTML='<div class="alert alert-'+type+' py-2">'+esc(msg)+'</div>'};
+
+/* Warn if Bootstrap did not load */
+window.addEventListener('load',()=>setTimeout(()=>{
+  if(!getComputedStyle(document.body).getPropertyValue('--bs-body-font-family'))$('#nocss').hidden=false;
+},2500));
+
+/* Router */
+function go(v){if(location.hash==='#'+v)route();else location.hash=v}
+function route(){
+  let v=location.hash.slice(1)||'home';
+  if(!$('#v-'+v))v='home';
+  const u=me();
+  if(v==='dash'&&!u){v='login';alertBox('#loginMsg','info','Please log in to open the dashboard.')}
+  if((v==='login'||v==='signup')&&u)v='dash';
+  $$('.view').forEach(e=>e.classList.toggle('on',e.id==='v-'+v));
+  $$('.auth-in').forEach(e=>e.classList.toggle('d-none',!u));
+  $$('.auth-out').forEach(e=>e.classList.toggle('d-none',!!u));
+  if(v==='dash')initDash();
+  try{const c=bootstrap.Collapse.getInstance($('#mainNav'));if(c)c.hide()}catch(e){}
+  window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',route);
+
+/* Auth (offline, saved in this browser) */
+$('#signForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const n=$('#sName').value.trim(),em=$('#sEmail').value.trim().toLowerCase(),p=$('#sPass').value,p2=$('#sPass2').value;
+  if(!n||!/^\S+@\S+\.\S+$/.test(em))return alertBox('#signMsg','danger','Enter your name and a valid email.');
+  if(p.length<6)return alertBox('#signMsg','danger','Password must be at least 6 characters.');
+  if(p!==p2)return alertBox('#signMsg','danger','Passwords do not match.');
+  const users=db.get('ss_users',{});
+  if(users[em])return alertBox('#signMsg','danger','That email is already registered. Please log in.');
+  users[em]={name:n,pw:hash(em+p)};
+  db.set('ss_users',users);
+  db.set('ss_sess',{email:em,name:n});
+  e.target.reset();$('#signMsg').innerHTML='';
+  go('dash');
+});
+$('#loginForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const em=$('#lEmail').value.trim().toLowerCase(),p=$('#lPass').value,u=db.get('ss_users',{})[em];
+  if(!u||u.pw!==hash(em+p))return alertBox('#loginMsg','danger','Incorrect email or password.');
+  db.set('ss_sess',{email:em,name:u.name});
+  e.target.reset();$('#loginMsg').innerHTML='';
+  go('dash');
+});
+$('#logout').addEventListener('click',()=>{db.del('ss_sess');go('home')});
+
+/* Risk engine (ported from our C program, RainReady 2.0) */
+const W=['Sunny','Cloudy','Light rain','Heavy rain','Thunderstorm'];
+const T=['Walking','Bicycle or motorcycle','Car, bus or covered transport'];
+function calc(w,r,t,m,e,k){
+  let s=Math.floor(r*45/100)+[0,5,15,30,35][w];
+  s+=m>30?20:m>10?10:5;
+  s+=[10,20,0][t];
+  if(e)s+=10;
+  s+=k>=39?20:k>=35?12:k>=32?5:0;
+  return Math.min(s,100);
+}
+const lvl=s=>s>=70?['HIGH','danger','Review your travel plan and prepare carefully.']:s>=40?['MODERATE','warning','Prepare the items relevant to your trip.']:['LOW','success','Keep checking conditions and prepare as needed.'];
+function recs(w,r,t,m,e,k){
+  const p=[['Heat and dehydration','Bring water and avoid long sun exposure.'],['Weather may change during your trip','Check an updated forecast before leaving.'],['Wet clothes and school materials','Bring an umbrella or raincoat.'],['Poor visibility, slippery roads and travel delays','Check official advisories before travelling.'],['Lightning, strong winds and flooding','Avoid open areas and tall trees, delay travel if you can, and stay indoors during lightning.']][w];
+  const a=['<b>Possible problem:</b> '+p[0]+'. <b>Action:</b> '+p[1]];
+  if(k>=32)a.push('<b>Extreme heat ('+k+'&deg;C):</b> drink water often, wear light clothing and rest in the shade.');
+  a.push(['<b>Walking:</b> use safe routes and avoid slippery areas.','<b>Bicycle/motorcycle:</b> wet roads reduce traction and visibility. Never ride through flooded roads.','<b>Transport:</b> allow extra time for traffic delays and follow official travel advisories.'][t]);
+  if(m>30)a.push('<b>Long commute:</b> expect prolonged exposure. Prepare protective items and check conditions along your route.');
+  if(e)a.push('<b>Belongings:</b> keep phone, tablet or laptop in a waterproof pouch or bag.');
+  return a;
+}
+const CHECK=['Check the latest weather forecast and warnings','Check your umbrella, raincoat and school bag','Protect your phone, gadgets and school materials','Plan a safe route and allow enough travel time','Follow school announcements and safety instructions'];
+
+/* Dashboard */
+const hkey=()=>'ss_h_'+me().email;
+function initDash(){$('#uName').textContent=me().name.split(' ')[0];renderHist()}
+$('#fR').addEventListener('input',e=>$('#rv').textContent=e.target.value);
+$('#riskForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const w=+$('#fW').value,r=+$('#fR').value,k=+$('#fK').value,t=+$('#fT').value,m=+$('#fM').value,el=$('#fE').checked;
+  if(!(m>=1&&m<=180)||!(k>=10&&k<=50))return alert('Trip time must be 1-180 minutes and temperature 10-50 °C.');
+  const s=calc(w,r,t,m,el,k),L=lvl(s),R=recs(w,r,t,m,el,k);
+  const severe=w>=3||r>=70||k>=39;
+  $('#result').innerHTML=
+    '<div class="d-flex align-items-center gap-4 flex-wrap mb-3"><div class="score text-'+L[1]+'">'+s+'<small class="fs-5 text-muted">/100</small></div>'+
+    '<div><span class="badge text-bg-'+L[1]+' fs-6">'+L[0]+' RISK</span><div class="text-muted mt-1">'+L[2]+'</div></div></div>'+
+    '<div class="progress mb-3" style="height:12px"><div class="progress-bar bg-'+L[1]+'" style="width:'+s+'%"></div></div>'+
+    '<p class="text-muted small mb-3">'+W[w]+' &middot; '+r+'% rain &middot; '+k+'&deg;C &middot; '+T[t]+' &middot; '+m+' min</p>'+
+    (severe?'<div class="alert alert-danger py-2"><i class="bi bi-exclamation-octagon-fill me-2"></i><b>Weather alert:</b> check official PAGASA or local warnings before leaving.</div>':'')+
+    '<h6 class="fw-bold">Possible problems and solutions</h6><ul>'+R.map(x=>'<li class="mb-1">'+x+'</li>').join('')+'</ul>'+
+    '<h6 class="fw-bold mt-3">Before leaving for school</h6>'+CHECK.map((c,i)=>'<div class="form-check"><input class="form-check-input" type="checkbox" id="ck'+i+'"><label class="form-check-label" for="ck'+i+'">'+c+'</label></div>').join('')+
+    '<p class="small text-muted mt-3 mb-0">Never cross floodwaters or enter an unsafe route. Follow official warnings even if your score is low.</p>';
+  const h=db.get(hkey(),[]);
+  h.unshift({d:Date.now(),w:W[w],s:s});
+  db.set(hkey(),h.slice(0,10));
+  renderHist();
+});
+function renderHist(){
+  const h=db.get(hkey(),[]);
+  $('#hist').innerHTML=h.length?h.map(x=>{const L=lvl(x.s);return '<tr><td>'+esc(new Date(x.d).toLocaleString())+'</td><td>'+esc(x.w)+'</td><td>'+x.s+'/100</td><td><span class="badge text-bg-'+L[1]+'">'+L[0]+'</span></td></tr>'}).join(''):'<tr><td colspan="4" class="text-center text-muted">No checks yet.</td></tr>';
+}
+$('#clearH').addEventListener('click',()=>{if(confirm('Clear all your saved checks?')){db.del(hkey());renderHist()}});
+
+route();
+</script>
+</body>
+</html>
