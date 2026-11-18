@@ -1,0 +1,47 @@
+#include <stdio.h>
+ #include <stdlib.h>
+ int main() {
+     FILE *file;
+     int choice;
+     char id[20], name[100], section[50];
+     do {
+         // Open file in append mode — creates file if it doesn't exist
+         file = fopen("student_records.txt", "a");
+         if (file == NULL) {
+             printf("Error opening file!\n");
+             return 1;
+         }
+         // Get student details from user
+         printf("Enter Student Number: ");
+         scanf(" %[^\n]s", id);
+         printf("Enter Complete Name: ");
+         scanf(" %[^\n]s", name);
+         printf("Enter Section: ");
+         scanf(" %[^\n]s", section);
+         // Write record to file — matching the exact format required
+         fprintf(file, "ID Number:%s\n", id);
+         fprintf(file, "Complete Name:%s\n", name);
+         fprintf(file, "Section:%s\n\n", section);
+         printf("Record added and saved successfully.\n");
+         // Close the file
+         fclose(file);
+         // Ask user if they want to add another student
+         printf("Add another student? [Enter 1 for Yes, 0 for No]: ");
+         scanf("%d", &choice);
+         printf("\n");
+     } while (choice == 1);
+     printf("All student records have been saved.\n\n");
+     // === Read and Display All Records from the File ===
+     printf("--- Contents of student_records.txt ---\n\n");
+     file = fopen("student_records.txt", "r");
+     if (file == NULL) {
+         printf("No records found or error opening file.\n");
+         return 0;
+     }
+     char line[200];
+     while (fgets(line, sizeof(line), file) != NULL) {
+         printf("%s", line);
+     }
+     fclose(file);
+     return 0;
+ }
